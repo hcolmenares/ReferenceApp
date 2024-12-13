@@ -7,6 +7,7 @@ export interface Student {
   email: string;
   contacts: Contact[];
   referCode: string;
+  referlink: string;
   Refers: string[];
   incentives: string[];
 }

@@ -25,33 +25,17 @@
           </div>
         </div>
 
-        <div formArrayName="contacts" class="contacts column">
+        <div formArrayName="contacts" class="contacts">
           <label>Contactos</label>
           <div class="form-row row" *ngFor="let contact of contacts.controls; let i = index">
-            <input [formControlName]="i" class="form-input wd-100" placeholder="Ingrese contacto" />
-            <i class="pi pi-trash delete-supply" (click)="removeContact(i)"></i>
+            <div class="input-group">
+              <input [formControlName]="i" class="form-input" placeholder="Ingrese contacto" />
+              <i class="pi pi-trash delete-supply" (click)="removeContact(i)"></i>
+            </div>
           </div>
           <i class="pi pi-plus-circle add-supply btn btn-secondary" (click)="addContact('')"></i>
         </div>
-
-        <div formArrayName="Refers" class="refers column">
-          <label>Referencias</label>
-          <div class="form-row row" *ngFor="let refer of Refers.controls; let i = index">
-            <input [formControlName]="i" class="form-input wd-100" placeholder="Ingrese referencia" />
-            <i class="pi pi-trash delete-supply" (click)="removeRefer(i)"></i>
-          </div>
-          <i class="pi pi-plus-circle add-supply btn btn-secondary" (click)="addRefer('')"></i>
-        </div>
-
-        <div formArrayName="incentives" class="incentives column">
-          <label>Incentivos</label>
-          <div class="form-row row" *ngFor="let incentive of incentives.controls; let i = index">
-            <input [formControlName]="i" class="form-input wd-100" placeholder="Ingrese incentivo" />
-            <i class="pi pi-trash delete-supply" (click)="removeIncentive(i)"></i>
-          </div>
-          <i class="pi pi-plus-circle add-supply btn btn-secondary" (click)="addIncentive('')"></i>
-        </div>
-
+    
         <div class="form-submit row">
           <button type="submit" class="btn btn-secondary row" [disabled]="studentForm.invalid">Agregar</button>
 

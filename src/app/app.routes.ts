@@ -12,10 +12,16 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/home/home.component')
   },
   {
-    path: 'supplies',
+    path: 'supplies/:referCode',  
     title: 'Módulo de Insumos',
     loadComponent: () => import('./pages/supplies/supplies.component')
   },
+  {
+    path: 'supplies',  
+    title: 'Módulo de Insumos',
+    loadComponent: () => import('./pages/supplies/supplies.component')
+  },
+  
   {
     path: '',
     redirectTo: 'auth',

@@ -19,7 +19,8 @@ export class SuppliesListComponent {
     { field: 'name', header: 'Name' },
     { field: 'phone', header: 'Phone' },
     { field: 'email', header: 'Email' },
-    { field: 'referCode', header: 'Refer Code' }
+    { field: 'referCode', header: 'Refer Code' },
+    { field: 'referlink', header: 'Refer Link' }
   ];
 
   onAddStudent(): void {

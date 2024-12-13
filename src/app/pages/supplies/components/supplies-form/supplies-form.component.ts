@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output, OnInit } from '@angular/core';
 import { ValidatorsService } from '../../../../shared/services/validators.service';
 import {
   FormBuilder,
@@ -7,7 +7,7 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router'; // Inyecta ActivatedRoute
 import { CommonModule } from '@angular/common';
 import { PrimeNgModule } from '../../../../prime-ng/prime-ng.module';
 import { environment } from '../../../../../environments/environment';
@@ -20,25 +20,22 @@ import { Student } from '../../../interfaces/student.interface';
   templateUrl: './supplies-form.component.html',
   styleUrl: './supplies-form.component.scss',
 })
-export class SuppliesFormComponent {
+export class SuppliesFormComponent implements OnInit { // Implementa OnInit
   @Output() studentCreated = new EventEmitter<Student>();
 
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private validatorService = inject(ValidatorsService);
+  private route = inject(ActivatedRoute); // Inyecta ActivatedRoute
 
   public units: string[] = environment.units;
   @Output() closeView = new EventEmitter<void>();
 
   studentForm: FormGroup = this.fb.group({
-    id: ['', Validators.required],
-      name: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern(/^\d{3}-\d{3}-\d{4}$/)]],
-      email: ['', [Validators.required, Validators.email]],
-      referCode: ['', Validators.required],
-      contacts: this.fb.array([]),
-      Refers: this.fb.array([]),
-      incentives: this.fb.array([])
+    name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    referCode: ['', Validators.required], // Este es el campo que vamos a llenar automáticamente
+    contacts: this.fb.array([]),
   });
 
   get contacts(): FormArray {
@@ -57,24 +54,20 @@ export class SuppliesFormComponent {
     this.contacts.push(this.fb.control(contact, Validators.required));
   }
 
-  addRefer(refer: string): void {
-    this.Refers.push(this.fb.control(refer, Validators.required));
-  }
-
-  addIncentive(incentive: string): void {
-    this.incentives.push(this.fb.control(incentive, Validators.required));
-  }
-
   removeContact(index: number): void {
     this.contacts.removeAt(index);
   }
 
-  removeRefer(index: number): void {
-    this.Refers.removeAt(index);
-  }
-
-  removeIncentive(index: number): void {
-    this.incentives.removeAt(index);
+  ngOnInit(): void {
+    
+    this.route.params.subscribe(params => {
+      const referCode = params['referCode']; 
+      if (referCode) {
+        this.studentForm.patchValue({
+          referCode: referCode
+        });
+      }
+    });
   }
 
   onSubmit(): void {

@@ -28,6 +28,7 @@ export default class SuppliesComponent {
       email: 'john.doe@example.com',
       contacts: [],
       referCode: 'ABC123',
+      referlink: 'http://localhost:4200/#/supplies/ABC123',
       Refers: ['Jane Smith', 'Robert Brown'],
       incentives: ['Free Course', 'Discount']
     },
@@ -38,6 +39,7 @@ export default class SuppliesComponent {
       email: 'jane.smith@example.com',
       contacts: [],
       referCode: 'XYZ456',
+      referlink: 'http://localhost:4200/#/supplies/XYZ456',
       Refers: ['John Doe'],
       incentives: ['Gift Card']
     },
@@ -48,6 +50,7 @@ export default class SuppliesComponent {
       email: 'robert.brown@example.com',
       contacts: [],
       referCode: 'LMN789',
+      referlink: 'http://localhost:4200/#/supplies/LMN789',
       Refers: [],
       incentives: ['Free Trial']
     }
