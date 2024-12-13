@@ -1,1 +1,16 @@
-<p>supplies-list works!</p>
+<p-table [value]="supplies" [responsiveLayout]="'scroll'">
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let col of columns">{{ col.header }}</th>
+      <th>Acciones</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-student>
+    <tr>
+      <td *ngFor="let col of columns">{{ student[col.field] }}</td>
+      <td>
+        <button pButton label="Agregar" icon="pi pi-plus" (click)="onAddStudent()"></button>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

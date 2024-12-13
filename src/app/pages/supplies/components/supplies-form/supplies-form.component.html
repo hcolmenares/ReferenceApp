@@ -1,136 +1,63 @@
 <div class="form row">
   <div class="form-container wd-90 row">
     <div class="form-content wd-100 column">
-      <h3>Ingresar Insumo</h3>
-      <form
-        class="column wd-100"
-        [formGroup]="supplyForm"
-        (submit)="onSubmit(supplyForm)"
-      >
-        <div class="form-field column">
-          <input
-            type="text"
-            pInputText
-            placeholder="Ingrese el nombre del insumo"
-            class="form-input wd-100"
-            formControlName="recipe"
-          />
+      <h3>Ingresar Estudiante</h3>
+      <form class="column wd-100" [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+        <div class="row-inputs row">
+          <div class="form-field column">
+            <input id="name" type="text" class="form-input wd-100" formControlName="name" placeholder="Ingrese nombre" />
+            <p class="field-error" *ngIf="studentForm.get('name')?.invalid && studentForm.get('name')?.touched">Nombre es requerido.</p>
+          </div>
 
-          <p class="field-error" *ngIf="isValidField('recipe')">
-            Este campo es requerido.
-          </p>
-        </div>
+          <div class="form-field column">
+            <input id="phone" type="text" class="form-input wd-100" formControlName="phone" placeholder="123-456-7890" />
+            <p class="field-error" *ngIf="studentForm.get('phone')?.invalid && studentForm.get('phone')?.touched">Teléfono es requerido y debe coincidir con el formato 123-456-7890.</p>
+          </div>
 
-        <div formArrayName="supplies" class="supplies column">
-          <div
-            class="form-row row"
-            *ngFor="let supply of supplies.controls; let i = index"
-            [formGroupName]="i"
-          >
-            <div class="form-field column">
-              <input
-                type="number"
-                pInputText
-                placeholder="Ingrese la presentación del producto"
-                class="form-input wd-100"
-                formControlName="presentation"
-                min="0"
-              />
-              <p class="field-error" *ngIf="isValidField('presentation', i)">
-                Este campo es requerido.
-              </p>
-            </div>
+          <div class="form-field column">
+            <input id="email" type="email" class="form-input wd-100" formControlName="email" placeholder="Ingrese correo" />
+            <p class="field-error" *ngIf="studentForm.get('email')?.invalid && studentForm.get('email')?.touched">Ingrese un correo válido.</p>
+          </div>
 
-            <div class="form-field column">
-              <input
-                type="text"
-                pInputText
-                placeholder="Ingrese el nombre del producto"
-                class="form-input wd-100"
-                formControlName="name"
-                min="0"
-              />
-              <p class="field-error" *ngIf="isValidField('name', i)">
-                Este campo es requerido.
-              </p>
-            </div>
-
-            <div class="form-field column">
-              <p-dropdown
-                [options]="units"
-                placeholder="Seleccionar Unidad"
-                formControlName="unit"
-              ></p-dropdown>
-              <p class="field-error" *ngIf="isValidField('unit', i)">
-                Este campo es requerido.
-              </p>
-            </div>
-
-            <div class="form-field column">
-              <input
-                type="number"
-                pInputText
-                placeholder="Ingrese la unidad del producto"
-                class="form-input wd-100"
-                formControlName="price"
-                min="0"
-              />
-              <p class="field-error" *ngIf="isValidField('price', i)">
-                Este campo es requerido.
-              </p>
-            </div>
-
-            <div class="form-field column">
-              <input
-                type="number"
-                pInputText
-                placeholder="Ingrese la cantidad del insumo"
-                class="form-input wd-100"
-                formControlName="amount"
-                min="0"
-              />
-              <p class="field-error" *ngIf="isValidField('amount', i)">
-                Este campo es requerido.
-              </p>
-            </div>
-
-            <div class="form-field column">
-              <p-dropdown
-                [options]="units"
-                placeholder="Seleccionar Unidad"
-                formControlName="recipeUnit"
-              ></p-dropdown>
-              <p class="field-error" *ngIf="isValidField('recipeUnit', i)">
-                Este campo es requerido.
-              </p>
-            </div>
-
-            <div class="form-field column">
-              <input
-                type="number"
-                pInputText
-                placeholder="Ingrese el precio de la receta"
-                class="form-input wd-100"
-                formControlName="recipePrice"
-                min="0"
-              />
-              <p class="field-error" *ngIf="isValidField('recipePrice', i)">
-                Este campo es requerido.
-              </p>
-            </div>
-
-            <i class="pi pi-trash delete-supply" (click)="removeSupply(i)"></i>
+          <div class="form-field column">
+            <input id="referCode" type="text" class="form-input wd-100" formControlName="referCode" placeholder="Ingrese código de referencia" />
+            <p class="field-error" *ngIf="studentForm.get('referCode')?.invalid && studentForm.get('referCode')?.touched">Código de referencia es requerido.</p>
           </div>
         </div>
 
-        <i
-          class="pi pi-plus-circle add-supply btn btn-secondary"
-          (click)="addSupply()"
-        ></i>
+        <div formArrayName="contacts" class="contacts column">
+          <label>Contactos</label>
+          <div class="form-row row" *ngFor="let contact of contacts.controls; let i = index">
+            <input [formControlName]="i" class="form-input wd-100" placeholder="Ingrese contacto" />
+            <i class="pi pi-trash delete-supply" (click)="removeContact(i)"></i>
+          </div>
+          <i class="pi pi-plus-circle add-supply btn btn-secondary" (click)="addContact('')"></i>
+        </div>
+
+        <div formArrayName="Refers" class="refers column">
+          <label>Referencias</label>
+          <div class="form-row row" *ngFor="let refer of Refers.controls; let i = index">
+            <input [formControlName]="i" class="form-input wd-100" placeholder="Ingrese referencia" />
+            <i class="pi pi-trash delete-supply" (click)="removeRefer(i)"></i>
+          </div>
+          <i class="pi pi-plus-circle add-supply btn btn-secondary" (click)="addRefer('')"></i>
+        </div>
+
+        <div formArrayName="incentives" class="incentives column">
+          <label>Incentivos</label>
+          <div class="form-row row" *ngFor="let incentive of incentives.controls; let i = index">
+            <input [formControlName]="i" class="form-input wd-100" placeholder="Ingrese incentivo" />
+            <i class="pi pi-trash delete-supply" (click)="removeIncentive(i)"></i>
+          </div>
+          <i class="pi pi-plus-circle add-supply btn btn-secondary" (click)="addIncentive('')"></i>
+        </div>
+
+        <div class="form-submit row">
+          <button type="submit" class="btn btn-secondary row" [disabled]="studentForm.invalid">Agregar</button>
+
+          <button class="btn btn-primary row" (click)="closeForm()">Volver</button>
+        </div>
       </form>
-      <div class="form-submit row">
-        <button type="submit" class="btn btn-secondary row">Agregar</button>
-      </div>
     </div>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { ValidatorsService } from '../../../../shared/services/validators.service';
 import {
   FormBuilder,
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { PrimeNgModule } from '../../../../prime-ng/prime-ng.module';
 import { environment } from '../../../../../environments/environment';
+import { Student } from '../../../interfaces/student.interface';
 
 @Component({
   selector: 'supplies-form',
@@ -20,50 +21,70 @@ import { environment } from '../../../../../environments/environment';
   styleUrl: './supplies-form.component.scss',
 })
 export class SuppliesFormComponent {
+  @Output() studentCreated = new EventEmitter<Student>();
+
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private validatorService = inject(ValidatorsService);
-  public units: string[] = environment.units;
 
-  supplyForm: FormGroup = this.fb.group({
-    recipe: ['', Validators.required],
-    supplies: this.fb.array([this.createSupplyGroup()]),
+  public units: string[] = environment.units;
+  @Output() closeView = new EventEmitter<void>();
+
+  studentForm: FormGroup = this.fb.group({
+    id: ['', Validators.required],
+      name: ['', Validators.required],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{3}-\d{3}-\d{4}$/)]],
+      email: ['', [Validators.required, Validators.email]],
+      referCode: ['', Validators.required],
+      contacts: this.fb.array([]),
+      Refers: this.fb.array([]),
+      incentives: this.fb.array([])
   });
 
-  get supplies(): FormArray {
-    return this.supplyForm.get('supplies') as FormArray;
+  get contacts(): FormArray {
+    return this.studentForm.get('contacts') as FormArray;
   }
 
-  createSupplyGroup(): FormGroup {
-    return this.fb.group({
-      name: ['', Validators.required],
-      presentation: [0, Validators.required],
-      unit: [this.units[0], Validators.required],
-      price: [0, Validators.required],
-      amount: [0, Validators.required],
-      recipeUnit: [this.units[0], Validators.required],
-      recipePrice: [0, Validators.required],
-    });
+  get Refers(): FormArray {
+    return this.studentForm.get('Refers') as FormArray;
   }
 
-  addSupply(): void {
-    this.supplies.push(this.createSupplyGroup());
+  get incentives(): FormArray {
+    return this.studentForm.get('incentives') as FormArray;
   }
 
-  removeSupply(index: number): void {
-    this.supplies.removeAt(index);
+  addContact(contact: string): void {
+    this.contacts.push(this.fb.control(contact, Validators.required));
   }
 
-  isValidField(field: string, index?: number): boolean | null {
-    if (index == null) {
-      return this.validatorService.isValidField(this.supplyForm, field);
+  addRefer(refer: string): void {
+    this.Refers.push(this.fb.control(refer, Validators.required));
+  }
+
+  addIncentive(incentive: string): void {
+    this.incentives.push(this.fb.control(incentive, Validators.required));
+  }
+
+  removeContact(index: number): void {
+    this.contacts.removeAt(index);
+  }
+
+  removeRefer(index: number): void {
+    this.Refers.removeAt(index);
+  }
+
+  removeIncentive(index: number): void {
+    this.incentives.removeAt(index);
+  }
+
+  onSubmit(): void {
+    if (this.studentForm.valid) {
+      this.studentCreated.emit(this.studentForm.value);
+      this.studentForm.reset();
     }
-    else {
-      return this.validatorService.isValidField(this.supplies.at(index) as FormGroup, field);
-    }
   }
 
-  onSubmit(supplyForm: FormGroup): void {
-    console.log(supplyForm.value);
+  closeForm(): void {
+    this.closeView.emit();
   }
 }

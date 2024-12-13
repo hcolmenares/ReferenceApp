@@ -8,7 +8,7 @@ import { Component, input } from '@angular/core';
   styleUrl: './auth-title.component.scss'
 })
 export class AuthTitleComponent {
-  public title = input<string>('¡Hola!');
+  public title = input<string>('¡Saludos!');
   public enfasis = input<string>('Nos alegra volver a verte');
-  public subtitle = input<string>('Te damos la bienvenida a tu lugar especial');
+  public subtitle = input<string>('Te damos la bienvenida al modulo de referidos Skolmi');
 }

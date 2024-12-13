@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  padding: 1rem;
+
+  p-table {
+    width: 100%;
+    font-size: 0.9rem;
+
+    @media (max-width: 768px) {
+      th, td {
+        padding: 0.5rem;
+      }
+    }
+  }
+}

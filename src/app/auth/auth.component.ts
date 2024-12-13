@@ -28,7 +28,7 @@ export default class AuthComponent {
   public isIconChange: boolean = false;
   public isError: boolean = false;
   public inputType: string = 'password';
-  public loginImg: string = '/assets/img/login_1.jfif'
+  public loginImg: string = '/assets/img/login_1.jpg'
 
   loginForm: FormGroup = this.fb.group({
     userName: ['', Validators.required],

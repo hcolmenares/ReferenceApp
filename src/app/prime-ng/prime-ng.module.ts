@@ -6,6 +6,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { InputTextModule } from 'primeng/inputtext';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   exports: [
@@ -13,9 +14,10 @@ import { InputTextModule } from 'primeng/inputtext';
     CardModule,
     CheckboxModule,
     DropdownModule,
-    InputGroupModule,
     InputGroupAddonModule,
+    InputGroupModule,
     InputTextModule,
+    TableModule,
   ]
 })
 export class PrimeNgModule { }

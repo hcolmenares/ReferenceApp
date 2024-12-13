@@ -1,3 +1,10 @@
 <shared-menubar />
 
-<supplies-form />
+@if (isForm) {
+  <supplies-form (closeView)="changeView()" />
+}
+
+@else {
+  <supplies-list (addStudent)="changeView()" [supplies]="supplies"  />
+}
+

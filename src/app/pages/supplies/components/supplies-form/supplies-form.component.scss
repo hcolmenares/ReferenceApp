@@ -2,85 +2,152 @@
 
 .form {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $gray;
+}
+
+.row-inputs {
+  gap: 2rem;
 }
 
 .form-container {
-  height: 80%;
+  width: 90%;
+  max-width: 1200px;
   border-radius: 1rem;
-  background: $primary;
-  transform: translateY(3rem);
+  background: $white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 }
 
 .form-content {
-  height: 100%;
-  gap: 1rem;
-  padding: 3rem 2rem;
-
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: $black;
   h3 {
-    font-size: 4rem;
+    font-size: 2.5rem;
     color: $secondary;
-    position: relative;
+    text-align: center;
+    margin-bottom: 1rem;
 
     &::after {
       content: "";
-      height: 0.3rem;
-      width: 100%;
-      bottom: 0;
-      left: 0;
-      transform: translateY(1rem);
-      position: absolute;
+      display: block;
+      height: 0.2rem;
+      width: 50%;
+      margin: 0.5rem auto 0;
       background: $secondary;
     }
   }
 }
 
 form {
-  gap: 2rem;
-  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+  }
 }
 
-.supplies {
-  gap: 1rem;
-  justify-content: flex-start;
+.contacts,
+.refers,
+.incentives {
+  label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .form-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .delete-supply {
+      font-size: 1.5rem;
+      color: $danger;
+      cursor: pointer;
+      transition: color 0.3s;
+
+      &:hover {
+        color: darken($danger, 10%);
+      }
+    }
+  }
+
+  .add-supply {
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+    color: $primary;
+
+    &:hover {
+      color: lighten($primary, 10%);
+    }
+  }
 }
 
-.form-row,
 .form-field {
-  gap: 1rem;
-}
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
-.form-field {
   .form-input {
     height: 3rem;
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    padding: 0 1rem;
+    font-size: 1.6rem;
+    width: 100%;
 
-    &::placeholder,
-    &::content {
-      font-size: 1.8rem;
+    &::placeholder {
+      color: #999;
     }
   }
 
   .field-error {
     font-size: 1.2rem;
     color: $danger;
-    text-align: center;
+    text-align: left;
   }
 }
 
-.add-supply {
-  font-size: 3.4rem;
-}
+.form-submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 
-.delete-supply {
-  padding: 1rem;
-  color: $secondary;
-  font-size: 2rem;
-  cursor: pointer;
-  transition: 0.3s;
-  border-radius: 50%;
-}
+  button {
+    width: 10rem;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: $secondary;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
 
-.delete-supply:hover {
-  background: $secondary;
-  color: $white;
+    &:hover {
+      background: lighten($secondary, 10%);
+    }
+
+    &:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+  }
 }

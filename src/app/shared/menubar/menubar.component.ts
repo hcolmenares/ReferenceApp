@@ -21,15 +21,15 @@ export class MenubarComponent {
       route: 'home'
     },
     {
-      title: 'Insumos',
+      title: 'Estudiantes',
       route: 'supplies'
     },
     {
-      title: 'Recetas',
+      title: 'Referidos',
       route: 'home'
     },
     {
-      title: 'Cotizaciones',
+      title: 'Incentivos',
       route: 'home',
     },
     {
