@@ -11,19 +11,19 @@ export const routes: Routes = [
     path: 'home',
     title: 'Página Principal',
     loadComponent: () => import('./pages/home/home.component'),
-    canActivate: [AuthGuard] // Ruta protegida
+    // canActivate: [AuthGuard] // Ruta protegida
   },
   {
     path: 'supplies/:referCode',
     title: 'Módulo de referidos',
     loadComponent: () => import('./pages/supplies/supplies.component'),
-    canActivate: [AuthGuard] // Ruta protegida
+    // canActivate: [AuthGuard] // Ruta protegida
   },
   {
     path: 'supplies',
     title: 'Módulo de Insumos',
     loadComponent: () => import('./pages/supplies/supplies.component'),
-    canActivate: [AuthGuard] // Ruta protegida
+    // canActivate: [AuthGuard] // Ruta protegida
   },
 
   {
