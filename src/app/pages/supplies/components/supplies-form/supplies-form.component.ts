@@ -33,6 +33,7 @@ export class SuppliesFormComponent implements OnInit { // Implementa OnInit
 
   studentForm: FormGroup = this.fb.group({
     name: ['', Validators.required],
+    phone: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     referCode: ['', Validators.required], // Este es el campo que vamos a llenar automáticamente
     contacts: this.fb.array([]),
@@ -59,9 +60,9 @@ export class SuppliesFormComponent implements OnInit { // Implementa OnInit
   }
 
   ngOnInit(): void {
-    
+
     this.route.params.subscribe(params => {
-      const referCode = params['referCode']; 
+      const referCode = params['referCode'];
       if (referCode) {
         this.studentForm.patchValue({
           referCode: referCode
