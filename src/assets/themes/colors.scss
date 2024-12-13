@@ -1,0 +1,59 @@
+@import './variables.scss';
+
+/*** Colors ***/
+
+.color-white {
+  color: $white;
+}
+
+.color-primary {
+  color: $primary;
+}
+
+.color-secondary {
+  color: $secondary;
+}
+
+.btn-primary {
+  background: $primary;
+  color: $white;
+
+  &:hover {
+    background: $dark-primary;
+  }
+}
+
+.btn-secondary {
+  background: $secondary;
+  color: $white;
+
+  &:hover {
+    background: $dark-secondary;
+  }
+}
+
+.bg-primary {
+  background: $primary;
+  color: $white;
+}
+
+.bg-primary-hover {
+  &:hover {
+    background: $dark-primary;
+  }
+}
+
+.bg-secondary {
+  background: $secondary;
+  color: $white;
+}
+
+.bg-secondary-hover {
+  &:hover {
+    background: $dark-secondary;
+  }
+}
+
+.bg-white {
+  background: $white;
+}

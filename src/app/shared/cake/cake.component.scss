@@ -1,0 +1,63 @@
+@import "../../../assets/themes/variables.scss";
+
+$cake-body: #fcbf29;
+$cake-cover: #994c10;
+$candle-body: #fd3018;
+$candle-alter: #ffa89e;
+$cinder: #ffa500;
+
+.cake {
+  margin: 2rem 0;
+
+  .top-layer,
+  .middle-layer,
+  .bottom-layer {
+    height: 8rem;
+    width: 24rem;
+    background-repeat: repeat;
+    background-size: 6rem 10rem;
+    background-position: 2.8rem 0;
+    background-image: linear-gradient(
+        transparent 50px,
+        #fedbab 50px,
+        #fedbab 60px,
+        transparent 60px
+      ),
+      radial-gradient(circle at 30px 5px, $cake-cover 30px, $cake-body 31px);
+    border-radius: 1rem 1rem 0 0;
+    margin: 0.5rem 0; /* Espacio entre las capas */
+  }
+
+  .middle-layer {
+    width: 20rem;
+    transform: translateY(1rem);
+  }
+
+  .top-layer {
+    width: 16rem;
+    transform: translateY(2rem);
+  }
+
+  .candle {
+    height: 4.5rem;
+    width: 1.5rem;
+    background: repeating-linear-gradient(
+      45deg,
+      $candle-body 0,
+      $candle-body 5px,
+      $candle-alter 5px,
+      $candle-alter 10px
+    );
+    transform: translateY(2.5rem);
+
+    &:before {
+      content: "";
+      height: 1.6rem;
+      width: 1.6rem;
+      background-color: $cinder;
+      border-radius: 0 50% 50% 50%;
+      position: relative;
+      transform: translateY(-3.5rem) rotate(45deg);
+    }
+  }
+}

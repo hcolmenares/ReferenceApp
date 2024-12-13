@@ -1,0 +1,24 @@
+<div class="login row">
+  <div class="login-container wd-100 bg-white row">
+    <div class="login-box">
+      <div class="login-content wd-100 column">
+        <auth-title class="login-heading" />
+
+        <auth-form
+          class="login-form"
+          [loginForm]="loginForm"
+          (user)="onLogin($event)"
+        />
+
+
+        <p class="login-singup pointer">
+          <a>¿No tienes ninguna cuenta?</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="login-box">
+      <div class="login-img"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,136 @@
+<div class="form row">
+  <div class="form-container wd-90 row">
+    <div class="form-content wd-100 column">
+      <h3>Ingresar Insumo</h3>
+      <form
+        class="column wd-100"
+        [formGroup]="supplyForm"
+        (submit)="onSubmit(supplyForm)"
+      >
+        <div class="form-field column">
+          <input
+            type="text"
+            pInputText
+            placeholder="Ingrese el nombre del insumo"
+            class="form-input wd-100"
+            formControlName="recipe"
+          />
+
+          <p class="field-error" *ngIf="isValidField('recipe')">
+            Este campo es requerido.
+          </p>
+        </div>
+
+        <div formArrayName="supplies" class="supplies column">
+          <div
+            class="form-row row"
+            *ngFor="let supply of supplies.controls; let i = index"
+            [formGroupName]="i"
+          >
+            <div class="form-field column">
+              <input
+                type="number"
+                pInputText
+                placeholder="Ingrese la presentación del producto"
+                class="form-input wd-100"
+                formControlName="presentation"
+                min="0"
+              />
+              <p class="field-error" *ngIf="isValidField('presentation', i)">
+                Este campo es requerido.
+              </p>
+            </div>
+
+            <div class="form-field column">
+              <input
+                type="text"
+                pInputText
+                placeholder="Ingrese el nombre del producto"
+                class="form-input wd-100"
+                formControlName="name"
+                min="0"
+              />
+              <p class="field-error" *ngIf="isValidField('name', i)">
+                Este campo es requerido.
+              </p>
+            </div>
+
+            <div class="form-field column">
+              <p-dropdown
+                [options]="units"
+                placeholder="Seleccionar Unidad"
+                formControlName="unit"
+              ></p-dropdown>
+              <p class="field-error" *ngIf="isValidField('unit', i)">
+                Este campo es requerido.
+              </p>
+            </div>
+
+            <div class="form-field column">
+              <input
+                type="number"
+                pInputText
+                placeholder="Ingrese la unidad del producto"
+                class="form-input wd-100"
+                formControlName="price"
+                min="0"
+              />
+              <p class="field-error" *ngIf="isValidField('price', i)">
+                Este campo es requerido.
+              </p>
+            </div>
+
+            <div class="form-field column">
+              <input
+                type="number"
+                pInputText
+                placeholder="Ingrese la cantidad del insumo"
+                class="form-input wd-100"
+                formControlName="amount"
+                min="0"
+              />
+              <p class="field-error" *ngIf="isValidField('amount', i)">
+                Este campo es requerido.
+              </p>
+            </div>
+
+            <div class="form-field column">
+              <p-dropdown
+                [options]="units"
+                placeholder="Seleccionar Unidad"
+                formControlName="recipeUnit"
+              ></p-dropdown>
+              <p class="field-error" *ngIf="isValidField('recipeUnit', i)">
+                Este campo es requerido.
+              </p>
+            </div>
+
+            <div class="form-field column">
+              <input
+                type="number"
+                pInputText
+                placeholder="Ingrese el precio de la receta"
+                class="form-input wd-100"
+                formControlName="recipePrice"
+                min="0"
+              />
+              <p class="field-error" *ngIf="isValidField('recipePrice', i)">
+                Este campo es requerido.
+              </p>
+            </div>
+
+            <i class="pi pi-trash delete-supply" (click)="removeSupply(i)"></i>
+          </div>
+        </div>
+
+        <i
+          class="pi pi-plus-circle add-supply btn btn-secondary"
+          (click)="addSupply()"
+        ></i>
+      </form>
+      <div class="form-submit row">
+        <button type="submit" class="btn btn-secondary row">Agregar</button>
+      </div>
+    </div>
+  </div>
+</div>

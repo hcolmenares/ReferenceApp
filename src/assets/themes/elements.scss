@@ -1,0 +1,14 @@
+/*** Custom elements ***/
+
+.pointer,
+.btn {
+  cursor: pointer;
+}
+
+.btn {
+  margin: 0;
+  padding: 1rem;
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
+  border: none;
+}

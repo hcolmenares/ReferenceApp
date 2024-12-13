@@ -1,0 +1,48 @@
+<form class="login-form column" [formGroup]="loginForm()">
+  <div class="form-field wd-100 column">
+    <p-inputGroup>
+      <p-inputGroupAddon>
+        <i class="pi pi-user"></i>
+      </p-inputGroupAddon>
+
+      <input
+        type="text"
+        pInputText
+        placeholder="Ingrese el usuario"
+        class="login-input wd-100"
+        formControlName="userName"
+      />
+    </p-inputGroup>
+    <p class="field-error" *ngIf="isValidField('userName')">
+      Este campo es requerido.
+    </p>
+  </div>
+
+  <div class="form-field wd-100 column">
+    <p-inputGroup>
+      <p-inputGroupAddon>
+        <i class="pi pi-key"></i>
+      </p-inputGroupAddon>
+
+      <input
+        [type]="inputType"
+        pInputText
+        placeholder="Ingrese la contraseña"
+        class="login-input wd-100"
+        formControlName="password"
+      />
+
+      <p-inputGroupAddon (click)="toggleIcon()">
+        <i class="password-icon row" [ngClass]=" isIconChange ? 'pi pi-eye-slash' : 'pi pi-eye' "></i>
+      </p-inputGroupAddon>
+    </p-inputGroup>
+
+    <p class="field-error" *ngIf="isValidField('password')">
+      Este campo es requerido.
+    </p>
+  </div>
+</form>
+
+<div class="login-submit row">
+  <button class="btn btn-primary row" (click)="onSubmit()">Ingresar</button>
+</div>

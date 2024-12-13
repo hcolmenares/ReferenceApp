@@ -1,0 +1,56 @@
+@import "../../../../assets/themes/variables.scss";
+
+.login-form {
+  gap: 2rem;
+}
+
+.form-field {
+  gap: 1rem;
+
+  .login-input {
+    ::placeholder {
+      font-size: 1.4rem;
+    }
+  }
+
+  .field-error {
+    font-size: 1.2rem;
+    color: $danger;
+  }
+}
+
+@layer primeng {
+  ::placeholder {
+    color: #6b7280;
+    font-size: 1.4rem;
+  }
+}
+
+i {
+  font-size: 1.6rem;
+}
+
+.login-submit {
+  margin-top: 2rem;
+
+  .submit-btn {
+    margin: 0;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+    border: none;
+    background: $primary;
+    color: $white;
+    cursor: pointer;
+
+    &:hover {
+      background: $dark-primary;
+    }
+  }
+}
+
+@media only screen and (min-width: $desktop) {
+  .login-submit {
+    justify-content: flex-start;
+  }
+}

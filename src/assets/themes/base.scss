@@ -1,0 +1,58 @@
+@import "./variables.scss";
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Nunito", sans-serif;
+}
+
+body {
+  font-size: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+h1,h2,h3,p,a,ul, img {
+  margin: 0;
+}
+
+p,
+a {
+  color: $gray;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.6rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+

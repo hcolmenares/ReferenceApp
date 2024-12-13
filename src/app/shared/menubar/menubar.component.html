@@ -1,0 +1,7 @@
+<div class="menubar bg-primary wd-100 row">
+  <ul class="list row">
+    @for (item of menuItems; track $index) {
+      <li class="list-item pointer bg-secondary-hover row" (click)="goTo( item.route )"> {{ item.title }} </li>
+    }
+  </ul>
+</div>

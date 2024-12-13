@@ -1,0 +1,86 @@
+@import "../../../../../assets/themes/variables.scss";
+
+.form {
+  width: 100vw;
+  height: 100vh;
+}
+
+.form-container {
+  height: 80%;
+  border-radius: 1rem;
+  background: $primary;
+  transform: translateY(3rem);
+}
+
+.form-content {
+  height: 100%;
+  gap: 1rem;
+  padding: 3rem 2rem;
+
+  h3 {
+    font-size: 4rem;
+    color: $secondary;
+    position: relative;
+
+    &::after {
+      content: "";
+      height: 0.3rem;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      transform: translateY(1rem);
+      position: absolute;
+      background: $secondary;
+    }
+  }
+}
+
+form {
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.supplies {
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.form-row,
+.form-field {
+  gap: 1rem;
+}
+
+.form-field {
+  .form-input {
+    height: 3rem;
+
+    &::placeholder,
+    &::content {
+      font-size: 1.8rem;
+    }
+  }
+
+  .field-error {
+    font-size: 1.2rem;
+    color: $danger;
+    text-align: center;
+  }
+}
+
+.add-supply {
+  font-size: 3.4rem;
+}
+
+.delete-supply {
+  padding: 1rem;
+  color: $secondary;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+.delete-supply:hover {
+  background: $secondary;
+  color: $white;
+}
