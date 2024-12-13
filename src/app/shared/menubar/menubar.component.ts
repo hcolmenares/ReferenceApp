@@ -26,11 +26,11 @@ export class MenubarComponent {
     },
     {
       title: 'Referidos',
-      route: 'home'
+      route: 'refers'
     },
     {
       title: 'Incentivos',
-      route: 'home',
+      route: 'incentives',
     },
     {
       title: 'Salir',

@@ -34,14 +34,14 @@ export class AuthService {
   }
 
   register(user: RegisterRequest) {
-    const body = { user };
     return this.http
-      .post<boolean>(this.registerUrl, body, {
+      .post<boolean>(this.registerUrl, user, {
         responseType: 'text' as 'json',
       })
       .pipe(
         map((response: any) => {
           alert('Usuario registrado con éxito');
+
         }),
         catchError((err) => throwError(() => err.statusText))
       );

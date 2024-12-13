@@ -4,15 +4,20 @@
       <div class="login-content wd-100 column">
         <auth-title class="login-heading" />
 
-        <auth-form
-          class="login-form"
-          [loginForm]="loginForm"
-          (user)="onLogin($event)"
-        />
+        @if (isRegister) {
+          <register-form [registerForm]="registerForm" (register)="onRegister($event)"  />
+        }
+        @else {
+          <auth-form
+            class="login-form"
+            [loginForm]="loginForm"
+            (user)="onLogin($event)"
+          />
+        }
 
 
         <p class="login-singup pointer">
-          <a>¿No tienes ninguna cuenta?</a>
+          <a (click)="changeFormsViews()"> {{ authString }} </a>
         </p>
       </div>
     </div>

@@ -1,0 +1,77 @@
+.container {
+  margin-top: 30px;
+  padding: 0 20px; /* Agrega un padding horizontal de 20px para los bordes */
+  max-width: 1200px; /* Limita el tamaño máximo del contenedor */
+  margin-left: auto; /* Centra el contenedor horizontalmente */
+  margin-right: auto;
+}
+
+/* Estilos para la tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid #ddd;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  padding: 12px 20px; /* Se añadió 20px a los lados */
+  text-align: center;
+}
+
+.table th {
+  background-color: #007bff;
+  color: white;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Colores de semáforo */
+.status {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.inscritos {
+  color: #28a745; /* Verde */
+  background-color: #d4edda;
+}
+
+.seguimiento {
+  color: #ffc107; /* Amarillo */
+  background-color: #fff3cd;
+}
+
+.matriculado {
+  color: #dc3545; /* Rojo */
+  background-color: #f8d7da;
+}
+
+.status:empty {
+  background-color: transparent;
+  color: transparent;
+}
+
+/* Estilo para la cabecera de la tabla */
+th {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Estilo para los botones */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

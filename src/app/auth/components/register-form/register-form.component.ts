@@ -6,7 +6,7 @@ import { PrimeNgModule } from '../../../prime-ng/prime-ng.module';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-register-form',
+  selector: 'register-form',
   standalone: true,
   imports: [CommonModule, PrimeNgModule, ReactiveFormsModule],
   templateUrl: './register-form.component.html',
@@ -17,7 +17,7 @@ export class RegisterFormComponent {
 
   public isIconChange: boolean = false;
   public inputType: string = 'password';
-  public loginForm = input.required<FormGroup>();
+  public registerForm = input.required<FormGroup>();
   public register = output<RegisterRequest>();
 
   toggleIcon(): void {
@@ -28,16 +28,16 @@ export class RegisterFormComponent {
   }
 
   isValidField(field: string) {
-    return this.validatorService.isValidField(this.loginForm(), field);
+    return this.validatorService.isValidField(this.registerForm(), field);
   }
 
   onSubmit() {
-    if (this.loginForm().invalid) {
-      this.loginForm().markAllAsTouched();
+    if (this.registerForm().invalid) {
+      this.registerForm().markAllAsTouched();
       return;
     }
 
-    const registerReq: RegisterRequest = this.loginForm().value;
+    const registerReq: RegisterRequest = this.registerForm().value;
     this.register.emit(registerReq);
   }
 }

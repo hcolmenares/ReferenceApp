@@ -8,6 +8,7 @@ import { LoginRequest } from '@auth/interfaces/loginRequest.interface';
 import { Router } from '@angular/router';
 import { AuthService } from './service/auth.service';
 import { RegisterRequest } from './interfaces/register-request.interface';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
 
 @Component({
   selector: 'app-auth',
@@ -16,6 +17,7 @@ import { RegisterRequest } from './interfaces/register-request.interface';
     CommonModule,
     PrimeNgModule,
     AuthFormComponent,
+    RegisterFormComponent,
     AuthTitleComponent,
   ],
   templateUrl: './auth.component.html',
@@ -26,20 +28,23 @@ export default class AuthComponent {
   private fb = inject( FormBuilder );
   private router = inject( Router );
 
+  protected isRegister: boolean = false;
+  protected authString: string = '¿No tienes ninguna cuenta?';
+
   public isIconChange: boolean = false;
   public isError: boolean = false;
   public inputType: string = 'password';
   public loginImg: string = '/assets/img/login_1.jpg'
 
-  loginForm: FormGroup = this.fb.group({
+  registerForm: FormGroup = this.fb.group({
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
-    charge: ['', Validators.required],
+    charge: ['Estudiante', Validators.required],
     password: ['', Validators.required],
     email: ['', Validators.required],
   });
 
-  registerForm: FormGroup = this.fb.group({
+  loginForm: FormGroup = this.fb.group({
     userName: ['', Validators.required],
     password: ['', Validators.required],
   });
@@ -54,11 +59,16 @@ export default class AuthComponent {
   }
 
   onRegister(user: RegisterRequest) {
-
+    this.authServive.register(user);
   }
 
   onUserAuth():void {
     this.authServive.getUserToken();
     this.router.navigate(['/home']);
+  }
+
+  changeFormsViews(): void {
+    this.isRegister = !this.isRegister;
+    this.isRegister ? this.authString = '¿Ya estás registrado?' : this.authString = '¿No tienes ninguna cuenta?';
   }
 }
