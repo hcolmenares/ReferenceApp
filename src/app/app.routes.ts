@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AuthGuard } from '@auth/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -9,19 +10,22 @@ export const routes: Routes = [
   {
     path: 'home',
     title: 'Página Principal',
-    loadComponent: () => import('./pages/home/home.component')
+    loadComponent: () => import('./pages/home/home.component'),
+    canActivate: [AuthGuard] // Ruta protegida
   },
   {
-    path: 'supplies/:referCode',  
-    title: 'Módulo de Insumos',
-    loadComponent: () => import('./pages/supplies/supplies.component')
+    path: 'supplies/:referCode',
+    title: 'Módulo de referidos',
+    loadComponent: () => import('./pages/supplies/supplies.component'),
+    canActivate: [AuthGuard] // Ruta protegida
   },
   {
-    path: 'supplies',  
+    path: 'supplies',
     title: 'Módulo de Insumos',
-    loadComponent: () => import('./pages/supplies/supplies.component')
+    loadComponent: () => import('./pages/supplies/supplies.component'),
+    canActivate: [AuthGuard] // Ruta protegida
   },
-  
+
   {
     path: '',
     redirectTo: 'auth',

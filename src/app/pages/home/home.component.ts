@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MenubarComponent } from '../../shared/menubar/menubar.component';
+import { AuthService } from '@auth/service/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -11,5 +12,9 @@ import { MenubarComponent } from '../../shared/menubar/menubar.component';
   styleUrl: './home.component.scss'
 })
 export default class HomeComponent {
+  private authService = inject(AuthService);
 
+  public getUser () {
+    return this.authService.getUserToken();
+  }
 }
